@@ -1,7 +1,7 @@
 {
-  "name": "weatherapp",
+  "name": "very-simple-weather-app",
   "version": "1.0.0",
-  "description": "A Simple weather App",
+  "description": "A weather app. shows 5 days weather forecast for Edinburgh",
   "main": "index.js",
   "scripts": {
     "start": "node ./node_modules/local-web-server/bin/cli",
