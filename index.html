@@ -1,0 +1,26 @@
+<html lang="en">
+    <head>
+        <script type="text/javascript" src="main.js"></script>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="favicon.ico">
+        <link href="style.css" rel="stylesheet">
+        <title>WeatherApp</title>
+    </head>
+    <body>
+        <h1>A very simple 5 day weather forecast app</h1>
+    </body>
+
+    <template id="template-cityData">
+        <div>5 Days forecast for <span class="cityName"></span>, <span class="countryName"></span></div>
+    </template>
+
+    <template id="template-error">
+        <h1>Oh no!</h1>
+        <div>Instead of giving me the weather forecast, the server told me:</div>
+        <div class="errorMessage"></div>
+        <div>(which is code <span class="errorCode"></span> if it means anything to you) </div>
+    </template>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "weatherapp",
+  "version": "1.0.0",
+  "description": "A Simple weather App",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./node_modules/local-web-server/bin/cli",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Oded Sharon",
+  "license": "ISC",
+  "devDependencies": {
+    "local-web-server": "^2.4.0"
+  }
+}
