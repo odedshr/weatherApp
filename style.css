@@ -1,6 +1,17 @@
 body {
+    color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
 }
+
+.weather-clear { background-image: url(images/clear.jpg); }
+.weather-cloud { background-image: url(images/cloudy.jpg); }
+.weather-drizzle { background-image: url(images/drizzle.jpg); }
+.weather-mist { background-image: url(images/misty.jpg); }
+.weather-rain { background-image: url(images/rainy.jpg); }
+.weather-snow { background-image: url(images/snowy.jpg); }
+.weather-storm { background-image: url(images/stormy.jpg); }
+.weather-sun { background-image: url(images/sunny.jpg); }
 
 ul {
     list-style: none;
@@ -10,7 +21,112 @@ ul {
 
 li {
     display: inline-block;
-    height: 150px;
-    width: 50px;
     white-space: nowrap;
+}
+
+.app-title {
+    text-shadow: 1px 1px #333;
+}
+
+.indices .value:after,
+.days .value:after {
+    color: #666;
+}
+
+.temperature .value:after {
+    content: "℃";
+    vertical-align: super;
+    font-size: 0.5em;
+}
+
+.clouds .value:after,
+.humidity .value:after,
+.pressure .value:after {
+    content: "%";
+}
+
+.wind .value:after {
+    content: "m/sec";
+}
+
+.rain .value:after {
+    content: "mm";
+}
+
+.today {
+    margin-bottom: 1em;
+}
+.today .temperature {
+    font-size: 4em;
+    text-align: center;
+    margin: 1em 0;
+    text-shadow: 1px 1px #333;
+}
+
+.days,
+.indices {
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 1em;
+    color: #333;
+    display: flex;
+}
+
+.indices {
+    height: 5em;
+}
+
+.days {
+    height: 6em;
+}
+
+.day,
+.index {
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+.indices .index {
+    cursor: pointer;
+    padding: 0.5em 0 1em;
+}
+
+.indices .index:before {
+    content: " ";
+    display: block;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-position: center 0.5em;
+    background-size: 32px;
+}
+
+.indices .index:first-child {
+    border-radius: 1em 0 0 1em;
+}
+
+.indices .index:last-child {
+    border-radius: 0 1em 1em 0;
+}
+
+.indices .index.selected {
+    background: linear-gradient(to bottom, rgba(30,87,153,0) 0%,rgba(31,88,154,0) 1%,rgba(125,185,232,1) 100%);
+}
+
+.indices .index.selected .name {
+    color: white;
+}
+
+.indices .humidity:before { background-image: url(icons/wi-humidity.svg); }
+.indices .pressure:before { background-image: url(icons/wi-barometer.svg); }
+.indices .clouds:before { background-image: url(icons/wi-cloud.svg); }
+.indices .wind:before { background-image: url(icons/wi-day-windy.svg); }
+.indices .rain:before { background-image: url(icons/wi-rain.svg); }
+.indices .snow:before { background-image: url(icons/wi-snow.svg); }
+
+.index .name {
+    display: block;
+    font-size: 0.75em;
+}
+
+.day .date {
+    font-size: 0.8em;
 }

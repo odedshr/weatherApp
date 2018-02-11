@@ -1,5 +1,6 @@
 <html lang="en">
     <head>
+        <script ype="text/javascript" src="moment.js"></script>
         <script type="text/javascript" src="main.js"></script>
 
         <meta charset="utf-8">
@@ -10,23 +11,39 @@
         <title>WeatherApp</title>
     </head>
     <body>
-        <h1>A very simple 5 day weather forecast app</h1>
+        <div class="loading">
+            <h1>Loading Edinburgh Weather forecasts...</h1>
+        </div>
     </body>
 
     <template id="template-cityData">
-        <div>5 Days forecast for <span class="cityName"></span>, <span class="countryName"></span></div>
+        <h1 class="app-title"><span class="numberOfDays"></span> Days forecast for <span class="cityName"></span>, <span class="countryName"></span></h1>
     </template>
 
     <template id="template-weatherList">
-        <ul class="weatherInformation">
-
+        <ul class="days">
         </ul>
     </template>
 
-    <template id="template-weatherItem">
-        <li>
+    <template id="template-today">
+        <div class="today">
+            <div class="index temperature"><span class="value"></span></div>
+            <ul class="indices">
+                <li class="index humidity"><span class="value"></span><span class="name">Humidity</span></li>
+                <li class="index pressure"><span class="value"></span><span class="name">Pressure</span></li>
+                <li class="index clouds"><span class="value"></span><span class="name">Cloudiness</span></li>
+                <li class="index wind"><span class="value"></span><span class="name">Wind</span></li>
+                <li class="index rain"><span class="value"></span><span class="name">Rain</span></li>
+                <li class="index snow"><span class="value"></span><span class="name">Snow</span></li>
+            </ul>
+        </div>
+    </template>
+
+    <template id="template-weatherDay">
+        <li class="day">
             <img class="weatherIcon" />
-            <div><span class="tempValue"></span><sup>o</sup><sub>c</sub></div>
+            <div class="index"><span class="value"></span></div>
+            <div class="date"></div>
         </li>
     </template>
 
