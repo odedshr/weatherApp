@@ -5,9 +5,5 @@ A Very simple weather App
 1. clone 
 
 # Usage
-
-# TODO:
-1. diplay data
-2. style data
-3. unit test
-4. complete doc
+- use `npm start` to start a local web server and then access the web-app via localhost on `http://127.0.0.1:8000`
+- use `npm test` to run unit tests

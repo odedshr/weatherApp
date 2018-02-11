@@ -1,11 +1,11 @@
 const key = 'f20a73d3467ff08b53d3ad37ef781115',
     cityName = 'Edinburgh';
 
-function App(){
-    this.getData().then(this.renderPage.bind(this));
+function WeatherApp(dataProvider){
+    dataProvider.getData().then(this.renderPage.bind(this));
 }
 
-App.prototype = {
+WeatherApp.prototype = {
     renderPage(data) {
         //remove loading message
         document.body.removeChild(document.querySelector('.loading'));
@@ -24,11 +24,6 @@ App.prototype = {
         } else {
             document.body.appendChild(this.getErrorElement(data));
         }
-    },
-
-    getData() {
-        return fetch('https://api.openweathermap.org/data/2.5/forecast?units=metric&q='+ cityName +'&appid=' + key)
-            .then(response => response.json());
     },
 
     getTemplate (templateName) {
@@ -50,8 +45,10 @@ App.prototype = {
 
         Array.from(forcastByDay).forEach((day, dayNumber) => {
             if (dayNumber === 0) {
+                // Add today's information
                 clone.prepend(this.getTodaysWeatherElement (day[1], index));
             } else {
+                // Add upcoming 5 days forecast
                 listDomElement.appendChild(this.getDailyWeatherElement(day[1], index));
             }
         });
@@ -69,6 +66,8 @@ App.prototype = {
         clone.querySelector('.rain .value').innerHTML = this.getValue(today, 'rain');
         clone.querySelector('.snow .value').innerHTML = this.getValue(today, 'snow');
         clone.querySelector('.' + index).classList.add('selected');
+
+        // make all index elements clickable. when clicked, they'll change the value
         clone.querySelectorAll('.index').forEach(element => {
             let index = element.classList[1]; // item 0 in classList is 'index'
             element.onclick = evt => { this.updateIndex(index); };
@@ -117,6 +116,7 @@ App.prototype = {
             dayMap.get(dayOfMonth).forecasts.push(item);
         });
 
+        //get daily statistics
         dayMap.forEach(day => {
             day.averageTemp = Math.round(100 * day.forecasts
                 .reduce((memo, forecast) => memo + forecast.main.temp, 0) / day.forecasts.length) / 100;
@@ -153,4 +153,17 @@ App.prototype = {
     },
 };
 
-window.addEventListener('load', new App());
+function DataProvider() {}
+
+DataProvider.prototype = {
+    getData() {
+        return fetch('https://api.openweathermap.org/data/2.5/forecast?units=metric&q='+ cityName +'&appid=' + key)
+            .then(response => response.json());
+    }
+};
+
+if (typeof(window) !== 'undefined') {
+    window.addEventListener('load', new WeatherApp(new DataProvider()));
+} else {
+    module.exports = { WeatherApp, DataProvider };
+}

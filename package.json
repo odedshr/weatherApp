@@ -5,11 +5,17 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./node_modules/local-web-server/bin/cli",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/mocha/bin/mocha tests/*.test.js"
   },
   "author": "Oded Sharon",
   "license": "ISC",
   "devDependencies": {
-    "local-web-server": "^2.4.0"
+    "jsdom": "^11.6.2",
+    "local-web-server": "^2.4.0",
+    "mocha": "^5.0.0",
+    "node-fetch": "^2.0.0"
+  },
+  "dependencies": {
+    "moment": "^2.20.1"
   }
 }
